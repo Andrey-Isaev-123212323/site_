@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>карта</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--
+        Укажите свой API-ключ. Тестовый ключ НЕ БУДЕТ работать на других сайтах.
+        Получить ключ можно в Кабинете разработчика: https://developer.tech.yandex.ru/keys/
+    -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=05b35818-e341-4c96-89ff-455e22653155" type="text/javascript"></script>
+    <script src="{% static 'placemark.js' %}" type="text/javascript"></script>
+	<style>
+        html, body, #map {
+            width: 100%; height: 100%; padding: 0; margin: 0;
+        }
+        #map {
+            width: 79%;
+            display: inline-block;
+            float: left;
+        }
+        #form_data {
+            width: 20%;
+            color: rgb(0, 0, 0);
+            display: inline-block;
+            float: right;
+            padding: 0px 0px 700px 0px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+    <div id="form_data">
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+          {{ form.as_p }}
+          <input alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaKHbaYAY095ITqxBGpHcanrw8aUVGg5Kd_uwaT20OXIfj1R35Ji8iRBHscgxIOz4Qy_pKf_0C6sOI-3TpZOvqGhu1HkYHs5zJ5jMfWAvui52BfdMayuZjg2LdPXv03pcpv5kJruw5jPFX90HrvG2qaxBY0zSWmtfp4-vYw9Q_NvU-IvqT8ClowX3e/s16000/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA.PNG" style="border-width: 0px; border-style: solid; margin: -15px 294px; float: right;" type="image">
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p><a href="http://localhost:8000/gl/"><img alt="" height="155" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6bCamOm-AxFQlLDZVWDgJ_2TW-O4pHoURoYYy2bdTx7uXZ1vZluzOT_j3Dsr0gg-p8ttzzXruQN6_ILlyTBAAEzD7iS4aZP98NJChIIJJhnLcaz_yo5q1XeJuJZCGDJadmUXrCoU8zBkon5m-JJ1H0vRSd1nwDxpm0Tq6VRm9PX4SjN4taNQkbfk1/s320/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA.PNG" style=" border-width: 0px; border-style: solid; margin: 30px 100px; float: right;" width="300"></p></a>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p><a href="http://localhost:8000/admin/"<p><img alt="" height="40" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMp-YgFsPcP-4_TwWkMAndq_eYhNc5cdLqq14-mtVlRc7_WuA8CYb-Y_mAHk2J5hTNPVQnqO4yAs7ohqcw2Bn2cis2UE7RdKgyo1cAouGYcZCa8ZZ9Hl1MuCYHfzEZUhXL_L6bNeY7b6cAR88ixy46TjN1QZ9VoDTECpRo-AStafs9f739NEaHO524/s16000/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA.PNG" style=" margin: -470px 50px; float: right;" width="100"></p></a>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+
+        </form>
+
+    </div>
+    <div hidden>
+        {% for obj in garbage_list %}
+            <input class="coord" value="{{ obj.name }},{{ obj.coords }}">
+        {% endfor %}
+    </div>
+
+</body>
+</html>
