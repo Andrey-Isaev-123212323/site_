@@ -1,0 +1,7 @@
+Должен быть установлен Python версии выше 3.8
+1) Создать виртуальное окружение python:
+    pip install virtualenv
+2) Установить зависимости:
+    .\venv\Scripts\pip install -r requirements.txt
+3) Запустить локальный сервер:
+    .\venv\Scripts\python manage.py runserver
